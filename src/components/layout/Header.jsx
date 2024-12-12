@@ -11,7 +11,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const position = window.pageYOffset;
+      const position = window.scrollY;
       setScrollPosition(position);
       
       // Determinar si se ha hecho scroll más allá del umbral
@@ -30,21 +30,32 @@ const Header = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const scrollToSection = (elementId) => {
+    console.log(elementId);
+    const element = document.getElementById(elementId);
+    console.log(element);
 
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
   const navItems = [
-    { label: 'Inicio', href: '#home' },
-    { label: 'Características', href: '#features' },
-    { label: 'Soluciones', href: '#solutions' },
-    { label: 'Contacto', href: '#contact' }
+    { label: 'Inicio', sectionId: 'home' },
+    { label: 'Servicios', sectionId: 'services' },
+    { label: 'Nosotros', sectionId: 'us' },
+    { label: 'Contacto', sectionId: 'contact' }
   ];
 
   return (
     <header 
       className={`
-        fixed top-0 left-0 w-full z-50 transition-all duration-300 
+        fixed top-0 left-0 w-full z-50 transition-all duration-300 mb-8 pb-8
         ${isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-md py-3' 
-          : 'bg-transparent py-6'}
+          ? 'bg-white/95 backdrop-blur-md shadow-md py-6' 
+          : 'bg-transparent py-3'}
       `}
     >
       <div className="container mx-auto px-4 flex justify-between items-center max-w-6xl">
@@ -63,20 +74,20 @@ const Header = () => {
         {/* Navegación Desktop */}
         <nav 
           className={`
-            hidden md:flex items-center space-x-6 transition-all duration-300
+            hidden md:flex items-center space-x-6 transition-all duration-300  
             ${isScrolled ? 'text-gray-800' : 'text-white'}
           `}
         >
           {navItems.map((item) => (
             <a 
-              key={item.href}
-              href={item.href}
+              key={item.sectionId}
+              onClick={()=>scrollToSection(item.sectionId)}
               className={`
-                hover:text-blue-600 font-medium text-sm transition-colors
+                hover:text-blue-600 font-medium text-sm transition-colors text-black cursor-pointer
                 ${isScrolled 
                   ? 'text-gray-700 hover:text-blue-700' 
-                  : 'text-white/90 hover:text-white'}
-              `}
+                  : 'text-white/90 hover:text-white'} 
+              `} // IMPORTANTE AQUI SE CAMBIA EL COLOR DEL TEXTO AL INICIO DEL SCROLL (ESTADO INICIAL)
             >
               {item.label}
             </a>
@@ -105,9 +116,9 @@ const Header = () => {
             `}
           >
             {isMenuOpen ? (
-              <XMarkIcon className="h-6 w-6" />
+              <XMarkIcon className="h-6 w-6 black" />
             ) : (
-              <Bars3Icon className="h-6 w-6" />
+              <Bars3Icon className="h-6 w-6 black" />
             )}
           </button>
         </div>
@@ -120,10 +131,13 @@ const Header = () => {
             <nav className="flex flex-col space-y-6 items-center">
               {navItems.map((item) => (
                 <a 
-                  key={item.href}
-                  href={item.href}
-                  className="text-gray-800 text-lg hover:text-blue-600 transition-colors"
-                  onClick={toggleMenu}
+                  key={item.sectionId}
+                  className="text-gray-800 text-lg hover:text-blue-600 transition-colors cursor-pointer"
+                  onClick={()=>{
+                    scrollToSection(item.sectionId);
+                    toggleMenu();
+                  }
+                    }
                 >
                   {item.label}
                 </a>
