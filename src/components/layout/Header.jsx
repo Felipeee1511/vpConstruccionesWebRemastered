@@ -1,31 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-
+import React, { useState, useEffect } from "react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import logo from "../../assets/logo.png";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Configuración de umbral de scroll (en píxeles)
-  const SCROLL_THRESHOLD = 500;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const position = window.scrollY;
-      setScrollPosition(position);
-      
-      // Determinar si se ha hecho scroll más allá del umbral
-      setIsScrolled(position > SCROLL_THRESHOLD);
-    };
-
-    // Agregar event listener
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // Limpiar event listener
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -36,65 +17,71 @@ const Header = () => {
     console.log(element);
 
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
   const navItems = [
-    { label: 'Inicio', sectionId: 'home' },
-    { label: 'Servicios', sectionId: 'services' },
-    { label: 'Nosotros', sectionId: 'us' },
-    { label: 'Contacto', sectionId: 'contact' }
+    { label: "Inicio", sectionId: "home" },
+    { label: "Servicios", sectionId: "services" },
+    { label: "Nosotros", sectionId: "us" },
+    { label: "Contacto", sectionId: "contact" },
   ];
 
   return (
-    <header 
+    <header
       className={`
-        fixed top-0 left-0 w-full z-50 transition-all duration-300 mb-8 pb-8
-        ${isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-md py-6' 
-          : 'bg-transparent py-3'}
+        relative top-0 left-0 w-full z-50 transition-all duration-300 
+        ${
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md shadow-md py-6"
+            : "bg-[#fffbdd] py-3"
+        }
       `}
     >
       <div className="container mx-auto px-4 flex justify-between items-center max-w-6xl">
         {/* Logo con efecto de transición */}
         <div className="flex items-center">
-          <img 
-            src="/logo.svg" 
-            alt="Logo" 
+          <a href="#">
+          <img
+            src={'/logo.webp'}
+            alt="Logo"
             className={`
-              h-8 w-auto transition-all duration-300
-              ${isScrolled ? 'scale-90' : 'scale-100'}
+              h-full transition-all duration-300 w-32
+              ${isScrolled ? "scale-90" : "scale-100"}
             `}
           />
+          </a>
         </div>
 
         {/* Navegación Desktop */}
-        <nav 
+        <nav
           className={`
             hidden md:flex items-center space-x-6 transition-all duration-300  
-            ${isScrolled ? 'text-gray-800' : 'text-white'}
+            ${isScrolled ? "text-gray-800" : "text-[#ffed76]"}
           `}
         >
           {navItems.map((item) => (
-            <a 
+            <a
               key={item.sectionId}
-              onClick={()=>scrollToSection(item.sectionId)}
+              onClick={() => scrollToSection(item.sectionId)}
               className={`
-                hover:text-blue-600 font-medium text-sm transition-colors text-black cursor-pointer
-                ${isScrolled 
-                  ? 'text-gray-700 hover:text-blue-700' 
-                  : 'text-white/90 hover:text-white'} 
+              hover:text-[#001289] font-medium text-lg transition-colors text-black cursor-pointer
+                ${
+                  isScrolled
+                    ? "text-gray-700 hover:text-blue-700"
+                    : "text-[#black]/50 hover:text-[#001289]"
+                } 
               `} // IMPORTANTE AQUI SE CAMBIA EL COLOR DEL TEXTO AL INICIO DEL SCROLL (ESTADO INICIAL)
             >
               {item.label}
             </a>
           ))}
-          
+
           {/* Botón CTA con transición */}
-          <button 
+          {/* <button 
             className={`
               px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300
               ${isScrolled 
@@ -103,16 +90,16 @@ const Header = () => {
             `}
           >
             Comenzar
-          </button>
+          </button> */}
         </nav>
 
         {/* Toggle Menú Móvil */}
         <div className="md:hidden">
-          <button 
+          <button
             onClick={toggleMenu}
             className={`
               focus:outline-none transition-colors
-              ${isScrolled ? 'text-gray-800' : 'text-white'}
+              ${isScrolled ? "text-gray-800" : "text-black"}
             `}
           >
             {isMenuOpen ? (
@@ -130,24 +117,23 @@ const Header = () => {
           <div className="container mx-auto px-4">
             <nav className="flex flex-col space-y-6 items-center">
               {navItems.map((item) => (
-                <a 
+                <a
                   key={item.sectionId}
                   className="text-gray-800 text-lg hover:text-blue-600 transition-colors cursor-pointer"
-                  onClick={()=>{
+                  onClick={() => {
                     scrollToSection(item.sectionId);
                     toggleMenu();
-                  }
-                    }
+                  }}
                 >
                   {item.label}
                 </a>
               ))}
-              <button 
+              {/* <button 
                 className="w-full bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-colors"
                 onClick={toggleMenu}
               >
                 Comenzar
-              </button>
+              </button> */}
             </nav>
           </div>
         </div>
