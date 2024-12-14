@@ -10,12 +10,12 @@ import "./index.css";
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col font-serif">
+    <div className="min-h-screen flex flex-col font-custom">
       <Header />
-      <main className="flex-grow">
+      <main className="flex-grow mt-32">
+      <Nosotros id="us" className="" />
         <Inicio id="home" />
         <Servicios id="services" />
-        <Nosotros id="us" />
         <Contacto id = "contact"/>
 
       </main>

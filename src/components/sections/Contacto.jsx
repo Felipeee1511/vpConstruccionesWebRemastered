@@ -113,9 +113,9 @@ const Contacto = ({ id }) => {
   return (
     <section id={id} className="min-h-screen bg-white">
       <div className="flex items-center justify-center  py-12  min-h-screen container mx-auto rounded-lg px-4 mb-4">
-        <div className="bg-gray-300 flex items-center justify-center  py-12  min-h-screen container mx-auto rounded-lg px-4 mb-4">
+        <div className="bg-[#F5F5F5] flex items-center justify-center  py-12  min-h-screen container mx-auto rounded-lg px-4 mb-4 border-t-4 border-[#FF9800]">
           <div className="max-w-xl w-full bg-gray-200 shadow-md rounded-lg p-8 mx-auto">
-            <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
+            <h2 className="text-2xl font-bold text-center text-[#1A4B84] mb-8">
               Contacta con Nosotros
             </h2>
 
@@ -124,7 +124,7 @@ const Contacto = ({ id }) => {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-[#5F6368] mb-2"
                 >
                   Nombre Completo
                 </label>
@@ -144,7 +144,7 @@ const Contacto = ({ id }) => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-[#5F6368] mb-2"
                 >
                   Correo Electrónico
                 </label>
@@ -164,7 +164,7 @@ const Contacto = ({ id }) => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  className="block text-sm font-medium text-[#5F6368] mb-2"
                 >
                   Mensaje
                 </label>
@@ -194,10 +194,10 @@ const Contacto = ({ id }) => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white ${
+                  className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white ${
                     isSubmitting
                       ? "bg-gray-500 cursor-not-allowed"
-                      : "bg-indigo-600 hover:bg-indigo-700"
+                      : "bg-[#FF9800] hover:bg-indigo-700"
                   }`}
                 >
                   {isSubmitting ? "Enviando..." : "Enviar Mensaje"}

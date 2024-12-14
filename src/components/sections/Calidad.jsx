@@ -1,44 +1,87 @@
+import React, { useState } from 'react';
+import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+
 const Calidad = ({ id }) => {
+  const [openSections, setOpenSections] = useState({
+    vehicles: true,
+    machinery: true,
+    safety: true
+  });
+
+  const equipment = {
+    vehicles: {
+      title: "Vehículos",
+      items: ["Camionetas doble cabina 4x2"]
+    },
+    machinery: {
+      title: "Maquinaria Especializada",
+      items: [
+        "Hidrolavadoras industriales",
+        "Aspiradoras industriales",
+        "Equipos de medición y control",
+        "Herramientas especializadas"
+      ]
+    },
+    safety: {
+      title: "Equipos de Seguridad",
+      items: [
+        "Equipos de protección personal completos",
+        "Sistemas de monitoreo y control",
+        "Equipos de rescate y emergencia"
+      ]
+    }
+  };
+
+  const toggleSection = (section) => {
+    setOpenSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
+
   return (
-    <section id={id} className="min-h-min bg-white">
-      <div className="bg-white-100 py-8 ">
+    <section id={id} className="bg-white z-40">
+      <div className="bg-white-100 min-h-[100vh] lg:min-h-[50vh] flex items-center">
         <div className="container mx-auto px-4">
           <div className="flex justify-center">
-            <div className="w-full max-w-full  shadow-md rounded-lg  bg-[#ffe0b3] ">
-              {/* <div className=" text-[#ff7300] text-center py-4 rounded-t-lg">
-                <h1 className="text-2xl font-extrabold">
-                  Expertos en Servicios Generales, Limpieza Industrial y
-                  Materiales Peligrosos
-                </h1>
-              </div> */}
-
-              <div className="p-6 text-white">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                  {/* Columna del texto */}
-                  <div>
-                    <h2 className="text-2xl font-bold mb-4 text-[#ff7300]">
-                      Expertos en Servicios Generales, Limpieza Industrial y
-                      Materiales Peligrosos
-                    </h2>
-                    <p className="text-black">
-                      En nuestra empresa, destacamos por ofrecer soluciones de
-                      calidad en servicios generales, limpieza industrial y
-                      manejo seguro de materiales peligrosos. Con tecnología
-                      avanzada y un equipo capacitado, garantizamos espacios
-                      limpios, seguros y eficientes. Nuestro compromiso es
-                      cuidar el medio ambiente, priorizar la seguridad y aportar
-                      valor a tu empresa. Confía en nosotros para soluciones
-                      confiables y responsables.
-                    </p>
-                  </div>
-                  {/* Columna de la imagen */}
-                  <div className="flex justify-center">
-                    <img
-                      src="/isopng.webp"
-                      alt="Certificación"
-                      className="w-64 h-64 object-cover transform transition-transform duration-500 hover:scale-110 hover:rotate-3"
-                    />
-                  </div>
+            <div className="w-full max-w-full shadow-md rounded-lg bg-[#F5F5F5] border-t-4 border-[#1A4B84] h-[100vh] lg:h-[40vh]">
+              <div className="p-6">
+                <h2 className="text-2xl font-bold mb-6 text-[#2E8B57]">
+                  Equipamiento
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6">
+                  {Object.entries(equipment).map(([key, section]) => (
+                    <div key={key} className="border-l-2 border-transparent">
+                      <button
+                        onClick={() => toggleSection(key)}
+                        className="w-full flex items-center justify-between group"
+                      >
+                        <h3 className="text-[#1A4B84] underline font-bold mb-3">
+                          {section.title}
+                        </h3>
+                        {openSections[key] ? (
+                          <ChevronDownIcon className="h-5 w-5 text-[#5F6368]" />
+                        ) : (
+                          <ChevronRightIcon className="h-5 w-5 text-[#5F6368]" />
+                        )}
+                      </button>
+                      
+                      {openSections[key] && (
+                        <div className="text-[#5F6368] space-y-2">
+                          {section.items.map((item, index) => (
+                            <div 
+                              key={index}
+                              className="pl-2 border-l-2 border-transparent hover:border-[#1A4B84] transition-colors duration-200 cursor-pointer"
+                            >
+                              <p className="cursor-pointer">
+                                {item}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
