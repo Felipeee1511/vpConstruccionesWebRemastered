@@ -92,7 +92,7 @@ const Carousel = () => {
 
   return (
     <section className="min-h-min bg-white overflow-hidden mt-4">
-      <div className="flex items-center justify-center min-h-screen container mx-auto rounded-lg px-4 mb-4 bg-[#F5F5F5]">
+      <div className="flex items-center justify-center min-h-screen container mx-auto rounded-lg px-4 mb-4 bg-[#F5F5F5] max-w-[95vw] md: lg:max-w-[90vw]">
         <div className="px-6 w-full content-between">
           <div className="flex items-center justify-between">
             <h2 className="font-semibold text-xl pb-0 sm:pb-6 sm:text-2xl md:text-4xl md:pb-12 text-[#2E8B57]">
@@ -151,7 +151,7 @@ const Carousel = () => {
                     style={{ backgroundImage: `url(${thumbnailUrl})` }}
                   />
                   {/* Overlay oscuro */}
-                  <div className="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-60" />
+                  <div className="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-0" />
                   {/* Panel naranja */}
                   <div
                     className="absolute bottom-0 left-0 right-0 bg-[#FF9800] transition-all duration-500 transform translate-y-[calc(100%-64px)] group-hover:translate-y-0"

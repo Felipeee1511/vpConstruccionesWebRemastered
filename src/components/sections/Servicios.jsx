@@ -6,7 +6,7 @@ const Servicios = ({ id }) => {
       <div className="bg-white py-8">
         <div className="container mx-auto px-4">
           <div className="flex justify-center">
-            <div className="w-full max-w-full shadow-md rounded-lg bg-[#F5F5F5] border-t-4 border-[#FF9800]">
+            <div className="w-full max-w-[100vw] lg:max-w-[95vw] shadow-md rounded-lg bg-[#F5F5F5] border-t-4 border-[#FF9800]">
               <div className="text-[#2E8B57] text-center py-6 rounded-t-lg">
                 <h1 className="text-2xl font-bold">Experiencia y Proyectos</h1>
               </div>

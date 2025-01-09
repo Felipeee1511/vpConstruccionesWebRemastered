@@ -21,16 +21,16 @@ const Footer = () => {
             <PhoneIcon className="h-5 w-5 text-white" />
             <div>
               <p className="text-sm font-medium">Teléfono</p>
-              <p className="text-sm">+56 9 1234 5678</p>
+              <p className="text-sm">+56 9 7935 7965</p>
             </div>
           </div>
 
           {/* Address Info - Left aligned */}
           <div className="flex items-center space-x-3 pb-2 border-b border-white/20 max-w-sm mb-4">
-            <MapPinIcon className="h-5 w-5 text-white" />
+            <EnvelopeIcon className="h-5 w-5 text-white" />
             <div>
-              <p className="text-sm font-medium">Dirección</p>
-              <p className="text-sm">Av. Ejemplo 123, Santiago, Chile</p>
+              <p className="text-sm font-medium">Contacto</p>
+              <p className="text-sm">contacto@vpconstrucciones.cl</p>
             </div>
           </div>
 

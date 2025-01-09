@@ -44,7 +44,7 @@ const Calidad = ({ id }) => {
       <div className="bg-white-100 min-h-[100vh] lg:min-h-[50vh] flex items-center">
         <div className="container mx-auto px-4">
           <div className="flex justify-center">
-            <div className="w-full max-w-full shadow-md rounded-lg bg-[#F5F5F5] border-t-4 border-[#1A4B84] h-[100vh] lg:h-[40vh]">
+            <div className="w-full max-w-screen lg:max-w-[95vw] shadow-md rounded-lg bg-[#F5F5F5] border-t-4 border-[#1A4B84] h-[90vh] sm:h-[80vh] md:h-[70vh] lg:h-[40vh]">
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-6 text-[#2E8B57]">
                   Equipamiento

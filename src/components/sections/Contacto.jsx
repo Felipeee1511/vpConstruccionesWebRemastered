@@ -113,7 +113,7 @@ const Contacto = ({ id }) => {
   return (
     <section id={id} className="min-h-screen bg-white">
       <div className="flex items-center justify-center  py-12  min-h-screen container mx-auto rounded-lg px-4 mb-4">
-        <div className="bg-[#F5F5F5] flex items-center justify-center  py-12  min-h-screen container mx-auto rounded-lg px-4 mb-4 border-t-4 border-[#FF9800]">
+        <div className="bg-[#F5F5F5] flex items-center justify-center  py-12  min-h-screen container mx-auto rounded-lg px-4 mb-4 border-t-4 border-[#FF9800] max-w-[100vw] lg:max-w-[95vw]">
           <div className="max-w-xl w-full bg-gray-200 shadow-md rounded-lg p-8 mx-auto">
             <h2 className="text-2xl font-bold text-center text-[#1A4B84] mb-8">
               Contacta con Nosotros
